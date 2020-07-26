@@ -5,6 +5,7 @@ import style from './styles';
 
 const { width, height } = Dimensions.get('window');
 export const SLIDER_HEIGHT = 0.61 * height;
+export const BORDER_RADIUS = 75;
 
 interface SlideProps {
   label: string;
