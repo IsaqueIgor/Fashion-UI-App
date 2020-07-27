@@ -13,62 +13,51 @@ import { useTheme, makeStyles } from '../../components';
 
 import Dot from '../../components/Dot';
 import { Theme } from '../../components/Theme';
+import Subslide from './SubSlider';
 
 const { width } = Dimensions.get('window');
 
 const slides = [
   {
-    label: 'Relaxed',
-    subtitle: 'Find Your Outfits',
-    description:
-      "Confused about your outfit? Don't worry! Find the best outfit here!",
+    id: 1,
+    title: 'Relaxed',
     color: '#BFEAF5',
-    picture: {
-      src: require('../../assets/img/peoples/slide_1.png'),
-      width: 653,
-      height: 772,
-    },
+    subTitle: 'Find Your OutFits',
+    description:
+      'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem minusiure atque consectetur omnis  illo ',
+    picture: require('../../assets/img/peoples/slide_1.png'),
   },
   {
-    label: 'Playful',
-    subtitle: 'Hear it First, Wear it First',
+    id: 2,
+    title: 'Playful',
+    color: '#BEECC4',
+    subTitle: 'Hear it First, Wear it First',
     description:
-      'Hating the clothes in your wardrobe? Explorer hundreds of outfit ideas!',
-    color: '#beecc4',
-    picture: {
-      src: require('../../assets/img/peoples/slide_2.png'),
-      width: 653,
-      height: 772,
-    },
+      'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem minusiure atque consectetur omnis  illo',
+    picture: require('../../assets/img/peoples/slide_2.png'),
   },
   {
-    label: 'Excentric',
-    subtitle: 'Your Style, Your Way',
+    id: 3,
+    title: 'Excentric',
+    color: '#ffe4d9',
+    subTitle: 'Your style, Your Way',
     description:
-      'Create your individual & unique style and look amazing everyday',
-    color: '#FFE4D9',
-    picture: {
-      src: require('../../assets/img/peoples/slide_3.png'),
-      width: 653,
-      height: 772,
-    },
+      'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem minusiure atque consectetur omnis  illo',
+    picture: require('../../assets/img/peoples/slide_3.png'),
   },
   {
-    label: 'Funky',
-    subtitle: 'Look Good, Feel Good',
-    description:
-      'Discover the latest trends in fashion and explore your personality.',
+    id: 4,
+    title: 'Funky',
     color: '#ffdddd',
-    picture: {
-      src: require('../../assets/img/peoples/slide_4.png'),
-      width: 653,
-      height: 772,
-    },
+    subTitle: 'Look Good, Feel Good',
+    description:
+      'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem minusiure atque consectetur omnis  illo',
+    picture: require('../../assets/img/peoples/slide_4.png'),
   },
 ];
 
 const OnBoarding = () => {
-  //const x = useValue(0);
+  const scrollRef = useRef<Animated.ScrollView>(null);
 
   const theme = useTheme();
   const styles = useStyles();
@@ -85,72 +74,75 @@ const OnBoarding = () => {
 
   return (
     <View style={styles.container}>
-      <Animated.View style={(styles.slider, { backgroundColor })}>
-        {slides.map(({ picture }, index) => {
-          const opacity = interpolate(x, {
-            inputRange: [
-              (index - 0.5) * width,
-              index * width,
-              (index + 0.5) * width,
-            ],
-            outputRange: [0, 1, 0],
-            extrapolate: Extrapolate.CLAMP,
-          });
-          return (
-            <Animated.View style={[styles.underlay, { opacity }]} key={index}>
-              <Image
-                source={picture.src}
-                style={{
-                  width: width - theme.borderRadii.xl,
-                  height:
-                    ((width - theme.borderRadii.xl) * picture.height) /
-                    picture.width,
-                }}
-              />
-            </Animated.View>
-          );
-        })}
+      <Animated.View style={[styles.slider, { backgroundColor }]}>
         <Animated.ScrollView
-          ref={scroll}
+          ref={scrollRef}
           horizontal
+          {...scrollHandler}
           snapToInterval={width}
-          decelerationRate={'fast'}
+          decelerationRate='fast'
           showsHorizontalScrollIndicator={false}
           bounces={false}
-          {...scrollHandler}
+          scrollEventThrottle={1}
         >
-          {slides.map(({ label, picture }, index) => (
-            <Slide key={index} right={!!(index % 2)} {...{ label, picture }} />
+          {slides.map(({ title, id, picture }, i) => (
+            <Slide title={title} right={!!(i % 2)} key={id} picture={picture} />
           ))}
         </Animated.ScrollView>
       </Animated.View>
-      <View style={styles.footer}>
+      <View style={[styles.footer]}>
         <Animated.View
-          style={{ ...StyleSheet.absoluteFillObject, backgroundColor }}
+          style={{
+            ...StyleSheet.absoluteFillObject,
+            backgroundColor,
+          }}
         />
-        <Animated.View style={[styles.footerContent]}>
-          <View style={styles.pagination}>
-            {slides.map((_, index) => (
-              <Dot key={index} currentIndex={divide(x, width)} {...{ index }} />
-            ))}
-          </View>
+
+        <View
+          style={[
+            {
+              ...StyleSheet.absoluteFillObject,
+            },
+            styles.indicatorContainer,
+          ]}
+        >
+          {slides.map(({ id }, i) => (
+            <Dot key={id} index={i} currentIndex={divide(x, width)} />
+          ))}
+        </View>
+
+        <View
+          style={{
+            flex: 1,
+            width: width,
+            flexDirection: 'row',
+            borderTopLeftRadius: theme.borderRadii.xl,
+            backgroundColor: 'white',
+            overflow: 'hidden',
+          }}
+        >
           <Animated.View
-            style={{
-              flexDirection: 'row',
-              flex: 1,
-              width: width * slides.length,
-              transform: [{ translateX: multiply(x, -1) }],
-            }}
+            style={[
+              styles.overlay,
+              {
+                width: width * slides.length,
+                transform: [{ translateX: multiply(x, -1) }],
+              },
+            ]}
           >
-            <View
-              style={{
-                flex: 1,
-                backgroundColor: 'white',
-                borderTopLeftRadius: 75,
-              }}
-            />
+            {slides.map(({ subTitle, description, id }, i) => {
+              const last = i === slides.length - 1;
+              return (
+                <Subslide
+                  key={id}
+                  last={last}
+                  {...{ subTitle, description }}
+                  onPress={() => {}}
+                />
+              );
+            })}
           </Animated.View>
-        </Animated.View>
+        </View>
       </View>
     </View>
   );
@@ -164,29 +156,22 @@ const useStyles = makeStyles((theme: Theme) => ({
   slider: {
     height: SLIDER_HEIGHT,
     borderBottomRightRadius: theme.borderRadii.xl,
+    backgroundColor: 'cyan',
+  },
+  overlay: {
+    backgroundColor: 'transparent',
+    flexDirection: 'row',
   },
   footer: {
     flex: 1,
   },
-  footerContent: {
-    flex: 1,
-    backgroundColor: 'white',
-    borderTopLeftRadius: theme.borderRadii.xl,
-  },
-  pagination: {
-    ...StyleSheet.absoluteFillObject,
-    height: theme.borderRadii.xl,
+  indicatorContainer: {
+    left: 50,
+    height: 80,
+    zIndex: 3,
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    flexDirection: 'row',
-  },
-
-  underlay: {
-    ...StyleSheet.absoluteFillObject,
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    borderTopLeftRadius: theme.borderRadii.xl,
-    overflow: 'hidden',
   },
 }));
 

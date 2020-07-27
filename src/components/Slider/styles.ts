@@ -6,13 +6,8 @@ const styles = StyleSheet.create({
   container: {
     width,
   },
-  title: {
-    fontSize: 80,
-    lineHeight: 80,
-    fontFamily: 'SFProText-Bold',
-    color: 'white',
-    textAlign: 'center',
-  },
+  underLay: {},
+  picture: {},
   titleContainer: {
     height: 100,
     justifyContent: 'center',
