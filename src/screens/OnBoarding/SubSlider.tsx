@@ -5,16 +5,16 @@ import Button from '../../components/Button';
 import { Text } from '../../components/Theme';
 
 interface SubslideProps {
-  subtitle: string;
+  subTitle: string;
   description: string;
   last: boolean;
   onPress: () => void;
 }
 
-const Subslide = ({ subtitle, description, last, onPress }: SubslideProps) => {
+const Subslide = ({ subTitle, description, last, onPress }: SubslideProps) => {
   return (
     <View style={styles.container}>
-      <Text variant='title2'>{subtitle}</Text>
+      <Text variant='title2'>{subTitle}</Text>
       <Text variant='body' style={styles.description}>
         {description}
       </Text>
