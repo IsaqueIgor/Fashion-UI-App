@@ -8,6 +8,7 @@ import Animated, {
   multiply,
 } from 'react-native-reanimated';
 
+import { StackNavigationProps, Routes } from '../../routes';
 import Slide, { SLIDER_HEIGHT } from '../../components/Slider';
 import { useTheme, makeStyles } from '../../components';
 
@@ -56,7 +57,9 @@ const slides = [
   },
 ];
 
-const OnBoarding = () => {
+const OnBoarding = ({
+  navigation,
+}: StackNavigationProps<Routes, 'Onboarding'>) => {
   const scrollRef = useRef<Animated.ScrollView>(null);
 
   const theme = useTheme();
@@ -130,14 +133,24 @@ const OnBoarding = () => {
               },
             ]}
           >
-            {slides.map(({ subTitle, description, id }, i) => {
-              const last = i === slides.length - 1;
+            {slides.map(({ subTitle, description, id }, index) => {
+              const last = index === slides.length - 1;
               return (
                 <Subslide
                   key={id}
-                  last={last}
+                  last={index === slides.length - 1}
                   {...{ subTitle, description }}
-                  onPress={() => {}}
+                  onPress={() => {
+                    if (last) {
+                      navigation.navigate('Welcome');
+                      return;
+                    }
+                    if (scrollRef.current) {
+                      scrollRef.current
+                        .getNode()
+                        .scrollTo({ x: width * (index + 1), animated: true });
+                    }
+                  }}
                 />
               );
             })}
