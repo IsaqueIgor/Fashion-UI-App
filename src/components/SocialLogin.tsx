@@ -2,9 +2,7 @@ import React, {ReactNode} from 'react';
 import {Image} from 'react-native';
 import {Box, useTheme, makeStyles, Theme} from './Theme';
 
-const Google = require('../assets/img/social_logos/Google.png');
-const Facebook = require('../assets/img/social_logos/Facebook.png');
-const Apple = require('../assets/img/social_logos/Apple.png');
+import {GoogleIcon, FacebookIcon, AppleIcon} from 'src/assets/img';
 
 interface SocialIconProps {
   children: ReactNode;
@@ -34,13 +32,13 @@ const SocialLogin = () => {
   return (
     <Box flexDirection="row" justifyContent="center">
       <SocialIcon>
-        <Image source={Google} style={styles.image} />
+        <Image source={GoogleIcon} style={styles.image} />
       </SocialIcon>
       <SocialIcon>
-        <Image source={Facebook} style={styles.image} />
+        <Image source={FacebookIcon} style={styles.image} />
       </SocialIcon>
       <SocialIcon>
-        <Image source={Apple} style={styles.image} />
+        <Image source={AppleIcon} style={styles.image} />
       </SocialIcon>
     </Box>
   );

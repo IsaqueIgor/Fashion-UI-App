@@ -1,7 +1,7 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import {createStackNavigator} from '@react-navigation/stack';
 
-import { Routes } from '../components/Navigation';
+import {Routes} from '../components/Navigation';
 
 import OnBoarding from './OnBoarding';
 import Welcome from './Welcome';
@@ -15,5 +15,5 @@ export const AuthenticationNavigator = () => {
       <AuthenticationStack.Screen name="Welcome" component={Welcome} />
       <AuthenticationStack.Screen name="Login" component={Login} />
     </AuthenticationStack.Navigator>
-  )
+  );
 };

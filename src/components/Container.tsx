@@ -3,8 +3,7 @@ import {Dimensions, Image, StatusBar, StyleSheet} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 import {Box, useTheme} from './Theme';
-
-export const assets = [require('../assets/img/patterns/bg_pattern_1.png')];
+import {Pattern1} from 'src/assets/img';
 
 const {width} = Dimensions.get('window');
 const aspectRatio = 1500 / 1000;
@@ -27,7 +26,7 @@ const Container = ({children, footer}: ContainerProps) => {
           overflow="hidden"
           height={height * 0.61}>
           <Image
-            source={assets[0]}
+            source={Pattern1[0]}
             style={{
               width,
               height,
@@ -43,7 +42,7 @@ const Container = ({children, footer}: ContainerProps) => {
           borderBottomLeftRadius="xl"
           height={height * 0.61}>
           <Image
-            source={assets[0]}
+            source={Pattern1[0]}
             style={{
               ...StyleSheet.absoluteFillObject,
               width,
