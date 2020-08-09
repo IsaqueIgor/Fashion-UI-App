@@ -14,8 +14,8 @@ import SubSlide from './SubSlide';
 import Dot from './Dot';
 
 import {useTheme, makeStyles} from '../../components';
-import {Routes, StackNavigationProps} from 'src/components/Navigation';
-import {Theme} from 'src/components/Theme';
+import {Routes, StackNavigationProps} from '../../components/Navigation';
+import {Theme} from '../../components/Theme';
 
 const {width} = Dimensions.get('window');
 

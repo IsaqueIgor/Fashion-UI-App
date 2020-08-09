@@ -1,4 +1,4 @@
-import {ParamListBase, RouteProp} from '@react-navigation/native';
+import {ParamListBase, RouteProp} from '@react-navigation/core';
 import {StackNavigationProp} from '@react-navigation/stack';
 
 export interface StackNavigationProps<

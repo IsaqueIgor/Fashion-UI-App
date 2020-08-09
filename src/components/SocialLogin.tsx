@@ -2,7 +2,7 @@ import React, {ReactNode} from 'react';
 import {Image} from 'react-native';
 import {Box, useTheme, makeStyles, Theme} from './Theme';
 
-import {GoogleIcon, FacebookIcon, AppleIcon} from 'src/assets/img';
+import {GoogleIcon, FacebookIcon, AppleIcon} from '../assets/img';
 
 interface SocialIconProps {
   children: ReactNode;

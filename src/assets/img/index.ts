@@ -1,6 +1,6 @@
 export {default as GoogleIcon} from './social_logos/Google.png';
-export {default as AppleIcon} from './social_logos/Apple.png.png';
-export {default as FacebookIcon} from './social_logos/Facebook.png.png';
+export {default as AppleIcon} from './social_logos/Apple.png';
+export {default as FacebookIcon} from './social_logos/Facebook.png';
 
 export {default as People1} from './peoples/slide_1.png';
 export {default as People2} from './peoples/slide_2.png';

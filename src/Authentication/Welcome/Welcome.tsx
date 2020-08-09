@@ -3,7 +3,7 @@ import {Image, Dimensions} from 'react-native';
 import {Routes, StackNavigationProps} from '../../components/Navigation';
 import {Button} from '../../components';
 import {Box, Text, useTheme} from '../../components/Theme';
-import {People4} from 'src/assets/img';
+import {People4} from '../../assets/img';
 
 const picture = {
   src: People4,
