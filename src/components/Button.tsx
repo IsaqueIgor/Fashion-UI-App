@@ -19,7 +19,7 @@ const Button = ({label, variant, onPress, children}: ButtonProps) => {
       ? theme.colors.primary
       : variant === 'transparent'
       ? 'transparent'
-      : theme.colors.gray;
+      : theme.colors.grey;
   const color =
     variant === 'primary' ? theme.colors.white : theme.colors.secondary;
 
