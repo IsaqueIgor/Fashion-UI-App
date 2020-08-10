@@ -10,6 +10,7 @@ import {
   Container,
   Button,
   TextInput,
+  AuthNavigationProps,
 } from '../../components';
 
 const SignUpSchema = Yup.object().shape({
@@ -22,7 +23,8 @@ const SignUpSchema = Yup.object().shape({
     .equals([Yup.ref('password')], 'Password not matched')
     .required('Required'),
 });
-const SignUp = () => {
+
+const SignUp = ({navigation}: AuthNavigationProps<'SignUp'>) => {
   const {handleChange, handleBlur, handleSubmit, touched, errors} = useFormik({
     initialValues: {email: '', password: '', passwordConfirmation: ''},
     onSubmit: (values) => console.log(values),
@@ -34,7 +36,7 @@ const SignUp = () => {
     <Footer
       title="Already have an account?"
       action="Login here"
-      onPress={() => {}}
+      onPress={() => navigation.navigate('Login')}
     />
   );
 
