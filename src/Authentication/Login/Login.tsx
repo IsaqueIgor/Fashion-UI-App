@@ -12,6 +12,7 @@ import {
   Box,
   Footer,
   Checkbox,
+  AuthNavigationProps,
   TextInput,
 } from '../../components';
 
@@ -23,7 +24,7 @@ const LoginSchema = Yup.object().shape({
     .required('Required'),
 });
 
-const Login = (/*{ navigation }: StackNavigationProps<Routes, 'Login'>*/) => {
+const Login = ({navigation}: AuthNavigationProps<'Login'>) => {
   const {
     handleChange,
     handleBlur,
@@ -34,7 +35,7 @@ const Login = (/*{ navigation }: StackNavigationProps<Routes, 'Login'>*/) => {
     touched,
   } = useFormik({
     initialValues: {email: '', password: '', rememberMe: false},
-    onSubmit: (values) => console.log(values),
+    onSubmit: () => navigation.navigate('Home'),
     validationSchema: LoginSchema,
   });
 

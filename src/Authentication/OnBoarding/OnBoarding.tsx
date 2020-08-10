@@ -13,8 +13,7 @@ import Slide, {SLIDE_HEIGHT} from './Slide';
 import SubSlide from './SubSlide';
 import Dot from './Dot';
 
-import {useTheme, makeStyles} from '../../components';
-import {Routes, StackNavigationProps} from '../../components/Navigation';
+import {useTheme, makeStyles, AuthNavigationProps} from '../../components';
 import {Theme} from '../../components/Theme';
 
 const {width} = Dimensions.get('window');
@@ -70,9 +69,7 @@ const slides = [
   },
 ];
 
-const OnBoarding = ({
-  navigation,
-}: StackNavigationProps<Routes, 'OnBoarding'>) => {
+const OnBoarding = ({navigation}: AuthNavigationProps<'Onboarding'>) => {
   const theme = useTheme();
   const styles = useStyles();
 

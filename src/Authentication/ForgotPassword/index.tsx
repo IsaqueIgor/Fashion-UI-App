@@ -7,6 +7,7 @@ import {
   Box,
   Text,
   Container,
+  AuthNavigationProps,
   Button,
   TextInput,
 } from '../../components';
@@ -14,10 +15,12 @@ import {
 const ForgotPasswordSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
 });
-const ForgotPassword = () => {
+const ForgotPassword = ({
+  navigation,
+}: AuthNavigationProps<'ForgotPassword'>) => {
   const {handleChange, handleBlur, handleSubmit, touched, errors} = useFormik({
     initialValues: {email: ''},
-    onSubmit: () => {},
+    onSubmit: () => navigation.navigate('PasswordChanged'),
     validationSchema: ForgotPasswordSchema,
   });
 
