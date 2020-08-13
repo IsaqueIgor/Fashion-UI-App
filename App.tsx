@@ -11,7 +11,7 @@ import {AuthenticationNavigator} from './src/Authentication';
 
 const Stack = createStackNavigator<AppRoutes>();
 
-const App = () => {
+export default function App() {
   return (
     <ThemeProvider {...{theme}}>
       <NavigationContainer>
@@ -26,6 +26,4 @@ const App = () => {
       </NavigationContainer>
     </ThemeProvider>
   );
-};
-
-export default App;
+}

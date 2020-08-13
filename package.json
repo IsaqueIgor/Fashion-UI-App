@@ -21,6 +21,7 @@
     "@types/react-native-vector-icons": "^6.4.5",
     "formik": "^2.1.5",
     "react": "16.13.1",
+    "react-dom": "^16.13.1",
     "react-native": "0.63.0",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-keyboard-aware-scroll-view": "^0.9.2",
@@ -30,6 +31,7 @@
     "react-native-screens": "^2.9.0",
     "react-native-svg": "^12.1.0",
     "react-native-vector-icons": "^7.0.0",
+    "react-native-web": "^0.13.5",
     "yup": "^0.29.1"
   },
   "devDependencies": {
