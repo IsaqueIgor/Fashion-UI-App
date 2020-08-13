@@ -1,6 +1,8 @@
 <h1 align="center">
-a bettea     <img alt="weather-check-header" title="weather-check" src=".github/layout1.png" height='150px' width="90%" />
+    <img alt="weather-check-header" title="weather-check" src=".github/layout1.png" height='150px' width="90%" />
 </h1>
+
+ <h1 align="center">Fashion UI App</h1>
 
 <p align="center">
  <img alt="languages count" src="https://img.shields.io/github/languages/count/IsaqueIgor/Fashion-UI-App?color=2CB9B0"/>
