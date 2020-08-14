@@ -69,6 +69,8 @@ const slides = [
   },
 ];
 
+export const assets = slides.map((slide) => slide.picture.src);
+
 const OnBoarding = ({navigation}: AuthNavigationProps<'Onboarding'>) => {
   const theme = useTheme();
   const styles = useStyles();

@@ -12,6 +12,7 @@ const picture = {
 };
 
 const {width} = Dimensions.get('window');
+export const assets = [picture.src];
 
 const Welcome = ({navigation}: AuthNavigationProps<'Welcome'>) => {
   const theme = useTheme();

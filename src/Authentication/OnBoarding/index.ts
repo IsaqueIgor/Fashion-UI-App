@@ -1,2 +1,2 @@
 /* eslint-disable prettier/prettier */
-export {default} from './OnBoarding';
+export {default, assets} from './OnBoarding';

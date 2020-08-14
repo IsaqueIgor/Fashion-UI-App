@@ -3,12 +3,18 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import {AuthenticationRoutes} from '../components/Navigation';
 
-import Onboarding from './OnBoarding';
-import Welcome from './Welcome';
+import Onboarding, {assets as onBoardingAssets} from './Onboarding';
+import {assets as HomeAssets} from '../Home/Drawer';
+import Welcome, {assets as welcomeAssets} from './Welcome';
+
 import Login from './Login';
 import SignUp from './SignUp';
 import ForgotPassword from './ForgotPassword';
 import PasswordChanged from './PasswordChanged';
+
+export const authenticationAssets = [...onBoardingAssets, ...welcomeAssets];
+
+export const assets = [...authenticationAssets, ...HomeAssets];
 
 const AuthenticationStack = createStackNavigator<AuthenticationRoutes>();
 export const AuthenticationNavigator = () => {
